@@ -1,37 +1,21 @@
 struct Solution;
 use std::cmp::{max, min};
-
 impl Solution {
-    pub fn largest_square_area(bottom_left: Vec<Vec<i32>>, top_right: Vec<Vec<i32>>) -> i64 {
-        let n = bottom_left.len();
-        let mut max_side = 0;
-
-        for i in 0..n {
-            for j in i + 1..n {
-                let w = min(top_right[i][0], top_right[j][0])
-                    - max(bottom_left[i][0], bottom_left[j][0]);
-                let h = min(top_right[i][1], top_right[j][1])
-                    - max(bottom_left[i][1], bottom_left[j][1]);
-
-                max_side = max(max_side, min(w, h));
-            }
+    pub fn minimum_difference(nums: Vec<i32>, k: i32) -> i32 {
+        let mut nums = nums;
+        let k = k - 1;
+        nums.sort();
+        let mut min_diff = i32::MAX;
+        for i in 0..nums.len() - k as usize {
+            min_diff = min(min_diff, nums[i + k as usize] - nums[i]);
         }
-
-        (max_side as i64) * (max_side as i64)
+        min_diff
     }
 }
 
 fn main() {
-    let bottom_left = vec![vec![0, 0], vec![1, 1], vec![2, 2]];
-    let top_right = vec![vec![1, 1], vec![2, 2], vec![3, 3]];
-    println!(
-        "ans = {:?}",
-        Solution::largest_square_area(bottom_left, top_right)
-    );
-    let bottom_left = vec![vec![0, 0], vec![2, 2]];
-    let top_right = vec![vec![3, 3], vec![4, 4]];
-    println!(
-        "ans = {:?}",
-        Solution::largest_square_area(bottom_left, top_right)
-    );
+    let nums = vec![9, 4, 1, 7];
+    let k = 2;
+    let result = Solution::minimum_difference(nums, k);
+    println!("result: {}", result);
 }
