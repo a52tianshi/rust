@@ -14,3 +14,4 @@ Cargo.lock
 leetcode/main
 learn/main
 src/number_theory/hensel_lemma/main
+/book_programming_rust/chapter_2/hello/target
