@@ -15,3 +15,6 @@ leetcode/main
 learn/main
 src/number_theory/hensel_lemma/main
 /book_programming_rust/chapter_2/hello/target
+book_programming_rust/chapter_1/hello
+/book_programming_rust/chapter_2/actix-gcd/target
+/book_programming_rust/chapter_2/bash_gcd/target
